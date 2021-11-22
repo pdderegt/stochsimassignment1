@@ -1,9 +1,12 @@
 import numpy as np
 import random
 
+from tqdm import tqdm
+import matplotlib.pyplot as plt
+
 RIGHT_X = 1; LEFT_X = -2; UPPER_i = 1.5; LOWER_i = -1.5
-GUESSES = 1000
-DEPTH = 100
+GUESSES = 100000
+DEPTH = 1000
 
 def random_coordinates():
     random_i = 1j*random.uniform(UPPER_i, LOWER_i)
@@ -37,9 +40,4 @@ def calculate_surface():
     ratio_inside = calculate_inside()/GUESSES
     return total_area()*ratio_inside
 
-print (calculate_surface())
-
-
-
-
-
+print(calculate_surface())
