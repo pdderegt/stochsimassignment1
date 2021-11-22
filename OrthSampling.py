@@ -6,7 +6,7 @@ import statistics
 ITERATIONS = 1000
 S = 316
 SAMPLES = S**2
-LEFTBOUND_X = -2; LEFTBOUND_Y = -2; RIGHTBOUND_X = 1; RIGHTBOUND_Y = 2
+LEFTBOUND_X = -2; LEFTBOUND_Y = -1.5; RIGHTBOUND_X = 1; RIGHTBOUND_Y = 1.5
 
 
 def LH(S):
@@ -75,22 +75,4 @@ def start_experiment():
             points_in_set += 1
     return calculate_set_area(points_in_set)
 
-
-def create_variance():
-    steps = 50
-    variance = []
-    f = open('logOrtho.txt', 'w')
-    for i in range(steps):
-        x = start_experiment()
-        variance.append(x)
-        print(x, file=f)
-
-    f.close()
-    mean_value = statistics.mean(variance)
-    variance = statistics.variance(variance, mean_value)
-
-    print(mean_value)
-    print(variance)
-
-
-create_variance()
+print(start_experiment())
