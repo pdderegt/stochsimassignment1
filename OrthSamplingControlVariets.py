@@ -87,22 +87,4 @@ def start_experiment():
     return calculate_set_area(np.mean(theta))
 
 
-def create_variance():
-    steps = 50
-    variance = []
-    f = open('logOrthaCV.txt', 'w')
-
-    for i in range(steps):
-        x = start_experiment()
-        variance.append(x)
-        print(x, file=f)
-
-    f.close()
-    mean_value = statistics.mean(variance)
-    variance = statistics.variance(variance, mean_value)
-
-    print(mean_value)
-    print(variance)
-
-
-create_variance()
+print(start_experiment())
