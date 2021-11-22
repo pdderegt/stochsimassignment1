@@ -3,8 +3,8 @@ import numpy as np
 import time
 import statistics
 
-ITERATIONS = 100
-S = 100
+ITERATIONS = 1000
+S = 316
 SAMPLES = S**2
 LEFTBOUND_X = -2; LEFTBOUND_Y = -2; RIGHTBOUND_X = 1; RIGHTBOUND_Y = 2
 
@@ -79,13 +79,18 @@ def start_experiment():
 def create_variance():
     steps = 50
     variance = []
+    f = open('logOrtho.txt', 'w')
     for i in range(steps):
-        variance.append(start_experiment())
+        x = start_experiment()
+        variance.append(x)
+        print(x, file=f)
 
+    f.close()
     mean_value = statistics.mean(variance)
     variance = statistics.variance(variance, mean_value)
 
     print(mean_value)
     print(variance)
+
 
 create_variance()
